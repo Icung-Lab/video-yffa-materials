@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'prompt.dart';
 import 'control.dart';
+import 'score.dart';
 
 void main() {
   runApp(const BullsEyeApp());
@@ -34,39 +35,28 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Prompt(
-              targetValue: 100,
-            ),
-            const Control(),
-            TextButton(
-              child:
-                  const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
-              onPressed: () {
-                _showAlert(context);
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('Start Over'),
-                  onPressed: () {},
-                ),
-                const Text('Score: '),
-                const Text('99999'),
-                const Text('Round: '),
-                const Text('999'),
-                TextButton(
-                  child: const Text('Info'),
-                  onPressed: () {},
-                )
-              ],
-            )
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Prompt(
+                targetValue: 100,
+              ),
+              const Control(),
+              TextButton(
+                child:
+                    const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
+                onPressed: () {
+                  _showAlert(context);
+                },
+              ),
+              const Scrore(
+                totalScore: 0,
+                round: 0,
+              ),
+            ],
+          ),
         ),
       ),
     );
