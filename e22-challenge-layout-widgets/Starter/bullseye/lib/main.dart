@@ -49,6 +49,23 @@ class _GamePageState extends State<GamePage> {
                 _showAlert(context);
               },
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Start Over'),
+                ),
+                const Text('Scode:'),
+                const Text('999'),
+                const Text('Round:'),
+                const Text('999'),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Info'),
+                )
+              ],
+            ),
           ],
         ),
       ),
