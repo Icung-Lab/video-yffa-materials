@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'prompt.dart';
 import 'control.dart';
 import 'score.dart';
+import 'game_model.dart';
 
 void main() {
   runApp(const BullsEyeApp());
@@ -32,6 +33,14 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  late GameModel _model;
+
+  @override
+  void initState() {
+    super.initState();
+    _model = GameModel(50);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +51,7 @@ class _GamePageState extends State<GamePage> {
             const Prompt(
               targetValue: 100,
             ),
-            const Control(),
+            Control(model: _model),
             TextButton(
               child:
                   const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
@@ -50,9 +59,9 @@ class _GamePageState extends State<GamePage> {
                 _showAlert(context);
               },
             ),
-            const Score(
-              totalScore: 0,
-              round: 1,
+            Score(
+              totalScore: _model.totalScore,
+              round: _model.round,
             ),
           ],
         ),
